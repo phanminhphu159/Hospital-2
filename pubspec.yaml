@@ -26,6 +26,8 @@ dependencies:
   intl: ^0.20.1
   path_provider: ^2.1.5
   flutter_dotenv: ^5.2.1
+  # font_awesome_flutter: ^9.2.0 
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +43,7 @@ flutter:
 
   assets:
     - assets/images/
-    # - assets/svgs/
+    - assets/svgs/
     # - .env.dev
     # - .env.prod
 
