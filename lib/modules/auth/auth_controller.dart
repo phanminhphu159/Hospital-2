@@ -11,7 +11,7 @@ import 'package:flutter_getx_boilerplate/shared/enum/enum.dart';
 class AuthController extends BaseController<AuthRepository> {
   AuthController(super.repository);
 
-  final emailController = TextEditingController(text: "emilys");
+  final emailController = TextEditingController(text: "emilys1");
   final passwordController = TextEditingController(text: "emilyspass");
 
   final formKey = GlobalKey<FormState>();

@@ -1,3 +1,4 @@
+import 'package:flutter_getx_boilerplate/modules/auth/login_screen.dart';
 import 'package:flutter_getx_boilerplate/modules/home/home.dart';
 import 'package:flutter_getx_boilerplate/modules/modules.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,7 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const initial = Routes.splash;
+  static const initial = Routes.login;
 
   static final routes = [
     GetPage(
@@ -21,6 +22,11 @@ class AppPages {
     GetPage(
       name: Routes.auth,
       page: () => const AuthScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: Routes.login,
+      page: () =>  LoginScreen(),
       binding: AuthBinding(),
     ),
     GetPage(

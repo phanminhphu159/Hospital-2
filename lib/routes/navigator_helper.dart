@@ -12,6 +12,11 @@ class NavigatorHelper {
     return Get.offNamed(Routes.auth);
   }
 
+  static toLogin() {
+    StorageService.clear();
+    return Get.offNamed(Routes.login);
+  }
+
   static toRegister() {}
 
   static toHome() {
