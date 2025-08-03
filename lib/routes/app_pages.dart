@@ -1,34 +1,62 @@
-import 'package:flutter_getx_boilerplate/modules/auth/login_screen.dart';
+import 'package:flutter_getx_boilerplate/modules/forgot_password/forgot_password_binding.dart';
+import 'package:flutter_getx_boilerplate/modules/forgot_password/forgot_password_screen.dart';
+import 'package:flutter_getx_boilerplate/modules/login/login_binding.dart';
+import 'package:flutter_getx_boilerplate/modules/login/login_screen.dart';
+import 'package:flutter_getx_boilerplate/modules/register/register_binding.dart';
+import 'package:flutter_getx_boilerplate/modules/register/register_screen.dart';
 import 'package:flutter_getx_boilerplate/modules/home/home.dart';
 import 'package:flutter_getx_boilerplate/modules/modules.dart';
+import 'package:flutter_getx_boilerplate/modules/veification_code/verification_code_binding.dart';
+import 'package:flutter_getx_boilerplate/modules/veification_code/verification_code_screen.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
-  static const initial = Routes.login;
+  static const initial = Routes.splash;
 
   static final routes = [
+    // splash and onboard
     GetPage(
       name: Routes.splash,
       page: () => const SplashScreen(),
-      children: [
-        GetPage(
-          name: Routes.onboard,
-          page: () => const OnboardScreen(),
-        ),
-      ],
+      // children: [
+      //   GetPage(
+      //     name: Routes.onboard,
+      //     page: () => const OnboardScreen(),
+      //   ),
+      // ],
     ),
-    GetPage(
-      name: Routes.auth,
-      page: () => const AuthScreen(),
-      binding: AuthBinding(),
-    ),
+
+    // auth
+    // GetPage(
+    //   name: Routes.auth,
+    //   page: () => const AuthScreen(),
+    //   binding: AuthBinding(),
+    // ),
     GetPage(
       name: Routes.login,
-      page: () =>  LoginScreen(),
-      binding: AuthBinding(),
+      page: () =>  const LoginScreen(),
+      binding: LoginBinding(),
     ),
+    GetPage(
+      name: Routes.register,
+      page: () =>  const RegisterScreen(),
+      binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: Routes.forgotPassword,
+      page: () =>  const ForgotPasswordScreen(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: Routes.verification,
+      page: () =>  const VerificationCodeScreen(),
+      binding: VerificationCodeBinding(),
+    ),
+
+
+    // home
     GetPage(
       name: Routes.home,
       page: () => const HomeScreen(),

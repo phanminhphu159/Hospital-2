@@ -41,7 +41,7 @@ class AuthController extends BaseController<AuthRepository> {
       final res = await repository.login(request);
       if (res.accessToken != null) {
         StorageService.token = res.accessToken!;
-        NavigatorHelper.toHome();
+        NavigatorHelper.toHomeScreen();
       } else {
         // showError("login_failed".tr,res. )
       }
