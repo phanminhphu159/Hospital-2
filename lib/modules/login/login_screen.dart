@@ -1,57 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_boilerplate/modules/login/login_controller.dart';
 import 'package:flutter_getx_boilerplate/shared/constants/colors.dart';
 import 'package:flutter_getx_boilerplate/shared/utils/size_config.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: LoginScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
-
-class LoginScreen extends StatefulWidget {
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  bool passwordVisible = false;
-  bool isPasswordWrong = false;
-  bool isEmailValid = true;
-
-  bool validateEmail(String email) {
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegex.hasMatch(email);
-  }
-
-  void handleLogin() {
-    setState(() {
-      isEmailValid = validateEmail(emailController.text);
-      if (!isEmailValid) return;
-
-      if (passwordController.text != "123456") {
-        isPasswordWrong = true;
-      } else {
-        isPasswordWrong = false;
-      }
-      // Dummy validation
-      if (passwordController.text != "123456") {
-        isPasswordWrong = true;
-      } else {
-        isPasswordWrong = false;
-      }
-    });
-  }
+class LoginScreen extends GetView<LoginController> {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-    resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: ColorConstants.white,
       body: SafeArea(
         child: Padding(
@@ -73,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 style: const TextStyle(color: Colors.black),
-                controller: emailController,
+                controller: controller.emailController,
                 decoration: InputDecoration(
                   fillColor: Colors.grey.withValues(alpha: 0.2),
                   filled: true,
@@ -86,111 +47,127 @@ class _LoginScreenState extends State<LoginScreen> {
                     Icons.email_outlined,
                     color: Colors.grey,
                   ),
-                  suffixIcon: isEmailValid
+                  suffixIcon: Obx(() => controller.isEmailValid.value
                       ? const Icon(Icons.check_circle, color: Colors.green)
-                      : const Icon(Icons.error, color: Colors.red),
+                      : const Icon(Icons.error, color: Colors.red)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: isEmailValid
+                    borderSide: controller.isEmailValid.value
                         ? const BorderSide(color: Colors.grey)
                         : const BorderSide(color: Colors.red),
                   ),
                 ),
+                onChanged: (value) {
+                  controller.isEmailValid.value =
+                      controller.validateEmail(value);
+                },
               ),
-              if (!isEmailValid)
-                Padding(
-                  padding: EdgeInsets.only(top: 8.0.h),
-                  child: Text(
-                    '*Please enter a valid email',
-                    style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                  ),
-                ),
+              Obx(() => !controller.isEmailValid.value
+                  ? Padding(
+                      padding: EdgeInsets.only(top: 8.0.h),
+                      child: Text(
+                        '*Please enter a valid email',
+                        style: TextStyle(color: Colors.red, fontSize: 12.sp),
+                      ),
+                    )
+                  : const SizedBox.shrink()),
               SizedBox(height: 16.h),
-              TextField(
-                style: const TextStyle(color: Colors.black),
-                controller: passwordController,
-                obscureText: !passwordVisible,
-                decoration: InputDecoration(
-                  fillColor: Colors.grey.withValues(alpha: 0.2),
-                  filled: true,
-                  hintText: 'Enter your password',
-                  hintStyle: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.grey,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.lock_outline,
-                    color: Colors.grey,
-                  ),
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        passwordVisible = !passwordVisible;
-                      });
-                    },
-                    child: Icon(
-                      passwordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.grey,
+              Obx(() => TextField(
+                    controller: controller.passwordController,
+                    obscureText: !controller.passwordVisible.value,
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      fillColor: Colors.grey.withOpacity(0.2),
+                      filled: true,
+                      hintText: 'Enter your password',
+                      hintStyle: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.grey,
+                      ),
+                      prefixIcon:
+                          const Icon(Icons.lock_outline, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          controller.passwordVisible.value
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () => controller.passwordVisible.toggle(),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                          color: controller.passwordBorderColor,
+                          width: 1.0,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                          color: controller.passwordBorderColor,
+                          width: 1.0,
+                        ),
+                      ),
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: isPasswordWrong
-                        ? const BorderSide(color: Colors.red)
-                        : const BorderSide(color: Colors.grey),
-                  ),
-                ),
-              ),
-              if (isPasswordWrong)
-                Padding(
-                  padding: EdgeInsets.only(top: 8.0.h),
-                  child: Text(
-                    '*The password you entered is wrong',
-                    style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                  ),
-                ),
+                  )),
+              Obx(() => controller.isPasswordWrong.value
+                  ? Padding(
+                      padding: EdgeInsets.only(top: 8.0.h),
+                      child: Text(
+                        '*The password you entered is wrong',
+                        style: TextStyle(color: Colors.red, fontSize: 12.sp),
+                      ),
+                    )
+                  : const SizedBox.shrink()),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.toForgotPasswordScreen();
+                  },
                   child: const Text(
                     'Forgot Password?',
-                    style: TextStyle(color: Colors.teal),
+                    style: TextStyle(color: ColorConstants.primaryGreen),
                   ),
                 ),
               ),
               SizedBox(height: 24.h),
               ElevatedButton(
-                onPressed: handleLogin,
+                onPressed: () => controller.onLogin(),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: ColorConstants.primaryGreen,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                 ),
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
+                child: Obx(() => controller.isLoading.value
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      )),
               ),
               SizedBox(height: 24.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text(
+                  Text(
                     "Don't have an account? ",
                     style: TextStyle(color: Colors.black, fontSize: 14.sp),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.toRegister();
+                    },
                     child: const Text(
                       'Sign Up',
-                      style: TextStyle(color: Colors.teal),
+                      style: TextStyle(color: ColorConstants.primaryGreen),
                     ),
                   ),
                 ],

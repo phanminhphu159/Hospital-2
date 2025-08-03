@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class NavigatorHelper {
   static toOnBoardScreen() {
-    return Get.offNamed(Routes.splash + Routes.onboard);
+    // return Get.offNamed(Routes.onboard);
+    return Get.offAllNamed(Routes.splash);
   }
 
   static toAuth() {
@@ -12,14 +13,24 @@ class NavigatorHelper {
     return Get.offNamed(Routes.auth);
   }
 
-  static toLogin() {
+  static toLoginScreen() {
     StorageService.clear();
     return Get.offNamed(Routes.login);
   }
 
-  static toRegister() {}
+  static toRegisterScreen() {
+    return Get.toNamed(Routes.register);
+  }
 
-  static toHome() {
+  static toForgotPasswordScreen() {
+    return Get.toNamed(Routes.forgotPassword);
+  }
+
+  static toVerificationCodeScreen() {
+    return Get.toNamed(Routes.verification);
+  }
+
+  static toHomeScreen() {
     return Get.offNamed(Routes.home);
   }
 }
