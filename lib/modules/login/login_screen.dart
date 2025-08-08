@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_boilerplate/modules/login/login_controller.dart';
 import 'package:flutter_getx_boilerplate/shared/constants/colors.dart';

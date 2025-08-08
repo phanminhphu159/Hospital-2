@@ -63,6 +63,7 @@ class _FocusedMenuDetailsState extends State<FocusedMenuDetails>
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
               child: Container(
+                // ignore: deprecated_member_use
                 color: Colors.black.withOpacity(0.3),
               ),
             ),

@@ -37,6 +37,7 @@ class SnackbarHelper {
       duration: const Duration(seconds: 5),
       snackPosition: SnackPosition.BOTTOM,
       colorText: Colors.white,
+      // ignore: deprecated_member_use
       backgroundColor: ColorConstants.highlightPrimary.withOpacity(.7),
       snackbarStatus: (status) {
         if (status == SnackbarStatus.CLOSED) {

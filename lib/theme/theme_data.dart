@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_boilerplate/shared/shared.dart';
 import 'package:flutter_getx_boilerplate/theme/text_theme.dart';

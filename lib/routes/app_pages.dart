@@ -2,6 +2,8 @@ import 'package:flutter_getx_boilerplate/modules/forgot_password/forgot_password
 import 'package:flutter_getx_boilerplate/modules/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_getx_boilerplate/modules/login/login_binding.dart';
 import 'package:flutter_getx_boilerplate/modules/login/login_screen.dart';
+import 'package:flutter_getx_boilerplate/modules/profile/profile_binding.dart';
+import 'package:flutter_getx_boilerplate/modules/profile/profile_screen.dart';
 import 'package:flutter_getx_boilerplate/modules/register/register_binding.dart';
 import 'package:flutter_getx_boilerplate/modules/register/register_screen.dart';
 import 'package:flutter_getx_boilerplate/modules/home/home.dart';
@@ -13,7 +15,7 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const initial = Routes.splash;
+  static const initial = Routes.profile;
 
   static final routes = [
     // splash and onboard
@@ -61,6 +63,11 @@ class AppPages {
       name: Routes.home,
       page: () => const HomeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.profile,
+      page: () => const ProfileScreen(),
+      binding: ProfileBinding(),
     ),
   ];
 }

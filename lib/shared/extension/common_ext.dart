@@ -13,8 +13,8 @@ extension FlavorExtension on Flavor {
         return ApiConstants.baseUrlDev;
       case Flavor.prod:
         return ApiConstants.baseUrlProd;
-      default:
-        return '';
+      // default:
+      //   return '';
     }
   }
 }

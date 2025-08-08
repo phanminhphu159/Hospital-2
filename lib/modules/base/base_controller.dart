@@ -32,7 +32,7 @@ abstract class BaseController<T> extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    // TODOo: implement onReady
     super.onReady();
   }
 
