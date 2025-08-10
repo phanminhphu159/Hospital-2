@@ -4,6 +4,9 @@ class ColorConstants {
   // Primary color
   static const Color primaryGreen = Color(0xFF00766a);
 
+  // 
+  static const Color lightBackGround = Color(0xFFF8FAFC);
+
 
 
   // Scaffold Background Colors

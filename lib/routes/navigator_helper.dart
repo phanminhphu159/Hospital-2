@@ -31,6 +31,10 @@ class NavigatorHelper {
   }
 
   static toHomeScreen() {
-    return Get.offNamed(Routes.home);
+    return Get.offNamed(Routes.bottomNav);
+  }
+
+  static toVaccinationManagementScreen() {
+    return Get.toNamed(Routes.vaccinationManagement);
   }
 }

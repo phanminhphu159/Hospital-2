@@ -386,15 +386,15 @@ class _PostInfoLoading extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 12,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorConstants.primaryGreen,
             ),
             const CircleAvatar(
               radius: 12,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorConstants.primaryGreen,
             ),
             const CircleAvatar(
               radius: 12,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorConstants.primaryGreen,
             ),
             const SizedBox(width: 8),
             Container(

@@ -41,7 +41,7 @@ class LoginController extends BaseController<LoginRepository> {
       if (isPasswordWrong.value) return;
 
       // If validation passes
-      NavigatorHelper.toOnBoardScreen();
+      NavigatorHelper.toHomeScreen();
     } finally {
       isLoading(false);
     }
@@ -49,11 +49,11 @@ class LoginController extends BaseController<LoginRepository> {
 
 
   void toRegister()  {
-      NavigatorHelper.toRegisterScreen();
+    NavigatorHelper.toRegisterScreen();
   }
 
   void toForgotPasswordScreen()  {
-      NavigatorHelper.toForgotPasswordScreen();
+    NavigatorHelper.toForgotPasswordScreen();
   }
 
 

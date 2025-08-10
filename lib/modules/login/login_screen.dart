@@ -15,7 +15,7 @@ class LoginScreen extends GetView<LoginController> {
     SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: ColorConstants.white,
+      backgroundColor: ColorConstants.lightBackGround,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0.h),

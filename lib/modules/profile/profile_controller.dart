@@ -10,8 +10,4 @@ class ProfileController
   var heartRate = '215bpm'.obs;
   var calories = '756cal'.obs;
   var weight = '103lbs'.obs;
-
-  void onBottomNavTap(int index) {
-    // Handle navigation
-  }
 }

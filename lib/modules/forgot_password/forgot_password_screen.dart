@@ -9,12 +9,12 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white, // Changed to white
+      backgroundColor: ColorConstants.lightBackGround, 
       appBar: AppBar(
-        backgroundColor: Colors.white, // Changed to white
+        backgroundColor: ColorConstants.lightBackGround,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back,
-              color: Colors.black), // Changed to black
+              color: Colors.black), 
           onPressed: () => Get.back(),
         ),
         elevation: 0,
@@ -29,7 +29,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
               style: TextStyle(
                 fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
-                color: Colors.black, // Changed to black
+                color: Colors.black,
               ),
             ),
             SizedBox(height: 10.h),

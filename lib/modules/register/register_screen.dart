@@ -19,7 +19,7 @@ class RegisterScreen extends GetView<RegisterController> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: ColorConstants.white,
+        backgroundColor: ColorConstants.lightBackGround,
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(

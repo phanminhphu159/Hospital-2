@@ -11,9 +11,9 @@ class VerificationCodeScreen extends GetView<VerificationCodeController> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorConstants.lightBackGround,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorConstants.lightBackGround,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),

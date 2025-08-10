@@ -11,5 +11,12 @@ abstract class Routes {
   static const verification = '/verification';
 
   static const home = '/';
+
+  // home
+  static const bottomNav = '/bottomNav';
+  // dashboard
+  static const dashboard = '/dashboard';
+  static const vaccinationManagement = '/vaccinationManagement';
+  // profile 
   static const profile = '/profile';
 }

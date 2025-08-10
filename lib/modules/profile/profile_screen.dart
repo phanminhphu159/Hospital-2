@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_boilerplate/shared/constants/constants.dart';
 import 'package:flutter_getx_boilerplate/shared/utils/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class ProfileScreen extends GetView<ProfileController> {
               SizedBox(height: 20.h),
               const CircleAvatar(
                 radius: 45,
-                backgroundImage: AssetImage('assets/images/circle_avatar.png'),
+                backgroundImage: AssetImage('assets/images/safe_vax_logo.png'),
               ),
               SizedBox(height: 12.h),
               Text(
@@ -81,7 +82,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorConstants.lightBackGround,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(30.h)),
                   ),
@@ -139,20 +140,6 @@ class ProfileScreen extends GetView<ProfileController> {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: 3,
-        selectedItemColor: const Color(0xFF00C6A2),
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        onTap: controller.onBottomNavTap,
-        items:  const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.mail_outline), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        ],
       ),
     );
   }

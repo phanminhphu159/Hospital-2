@@ -54,7 +54,7 @@ class VerificationCodeController
     final code = codeController.text.trim();
     if (code.length == 4) {
       _showSuccessDialog();
-      NavigatorHelper.toOnBoardScreen();
+      NavigatorHelper.toHomeScreen();
     } else {
       Get.snackbar(
         'Error',
@@ -67,7 +67,7 @@ class VerificationCodeController
   Future<void> _showSuccessDialog() async {
     return await Get.dialog(
       AlertDialog(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorConstants.primaryGreen,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
         content: Column(

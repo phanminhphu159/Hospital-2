@@ -116,7 +116,7 @@ class RegisterController extends BaseController<RegisterRepository> {
   Future<void> _showSuccessDialog() async {
     return await Get.dialog(
       AlertDialog(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorConstants.primaryGreen,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
